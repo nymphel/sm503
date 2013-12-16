@@ -44,10 +44,10 @@ public class FarmGame {
 		player2.setXp(startingXp);
 
 		lots = new ArrayList<>();
-		Lot lot1 = new Lot("lot-1");
-		Lot lot2 = new Lot("lot-2");
-		Lot lot3 = new Lot("lot-3");
-		Lot lot4 = new Lot("lot-4");
+		Lot lot1 = new Lot("lot1");
+		Lot lot2 = new Lot("lot2");
+		Lot lot3 = new Lot("lot3");
+		Lot lot4 = new Lot("lot4");
 		lots.add(lot1);
 		lots.add(lot2);
 		lots.add(lot3);
@@ -148,6 +148,7 @@ public class FarmGame {
 				}
 				String label = column + "" + row;
 				Section section = selectSection(label);
+				label += ","+ section.getLot().getName();
 				label += "[" +section.getLetter()+ "]";
 				
 				data[i][j+1] = label;
