@@ -1,4 +1,4 @@
-package tr.edu.metu;
+package tr.edu.metu.ii.sm.oosd.persistance;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
