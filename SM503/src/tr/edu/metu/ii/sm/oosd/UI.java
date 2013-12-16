@@ -5,7 +5,8 @@ public class UI {
 	public static void main(String[] args) {
 		FarmGame farmGame = FarmGame.getInstance();
 		farmGame.prepareGame();
-		farmGame.startGame();
+		//farmGame.startGame();
+		farmGame.printFarmArea();
 	}
 
 }

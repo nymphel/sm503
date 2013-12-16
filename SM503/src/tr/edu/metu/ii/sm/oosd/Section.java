@@ -5,6 +5,7 @@ public class Section {
 	private String coordinate;
 	private Lot lot;
 	private Player owner;
+	private String letter;
 	
 	public boolean buySection(Player player) {
 		
@@ -57,6 +58,14 @@ public boolean sellSection(Player player) {
 
 	public void setLot(Lot lot) {
 		this.lot = lot;
+	}
+
+	public String getLetter() {
+		return letter;
+	}
+
+	public void setLetter(String letter) {
+		this.letter = letter;
 	}
 
 }
