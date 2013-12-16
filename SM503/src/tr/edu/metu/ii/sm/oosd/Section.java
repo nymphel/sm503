@@ -7,6 +7,8 @@ public class Section {
 	private Player owner;
 	private String letter;
 	
+	//TODO ready to plow, ready to harvest
+	
 	public boolean buySection(Player player) {
 		
 		if(owner != null) {
