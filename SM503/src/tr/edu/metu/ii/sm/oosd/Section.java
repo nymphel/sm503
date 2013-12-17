@@ -1,5 +1,10 @@
 package tr.edu.metu.ii.sm.oosd;
 
+import java.util.HashMap;
+
+import tr.edu.metu.ii.sm.oosd.persistance.Action;
+import tr.edu.metu.ii.sm.oosd.persistance.Action.Type;
+
 public class Section {
 
 	private String coordinate;
@@ -14,24 +19,27 @@ public class Section {
 	private Status status;
 
 	public boolean buySection(Player player) {
-
+		
+		HashMap<Type, Action> actions = FarmGame.getInstance().getDataStore().getActions();
+		Action action = actions.get(Type.BUY_SECTION);
+		
 		if (this.owner != null) {
 			System.out.println("this section has an owner already.");
 			return false;
 		} else if (lot.getOwner() != null && !lot.getOwner().equals(player)) {
 			System.out.println("you cannot purchase this section, because it is located in opponents lot.");
 			return false;
-		} else if (player.getCoin() < Currency.SECTION_BUY_COIN) {
+		} else if (player.getCoin() < action.getCost()) {
 			System.out.println("you cannot purchase this section, you dont have enough coins.");
 			return false;
 		}
 
 		int coin = player.getCoin();
-		coin = coin - Currency.SECTION_BUY_COIN;
+		coin = coin - action.getCost();
 		player.setCoin(coin);
 
 		int xp = player.getXp();
-		xp += Currency.SECTION_BUY_XP;
+		xp += action.getXpGained();
 		player.setXp(xp);
 
 		return true;
@@ -45,12 +53,15 @@ public class Section {
 			return false;
 		}
 		
+		HashMap<Type, Action> actions = FarmGame.getInstance().getDataStore().getActions();
+		Action action = actions.get(Type.SELL_SECTION);
+		
 		int coin = player.getCoin();
-		coin = coin + Currency.SECTION_SELL_COIN;
+		coin = coin + action.getCost();
 		player.setCoin(coin);
 		
 		int xp = player.getXp();
-		xp += Currency.SECTION_SELL_XP;
+		xp += action.getXpGained();
 		player.setXp(xp);
 
 		return true;
