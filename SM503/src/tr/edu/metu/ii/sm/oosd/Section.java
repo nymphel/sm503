@@ -1,41 +1,59 @@
 package tr.edu.metu.ii.sm.oosd;
 
 public class Section {
-	
+
 	private String coordinate;
 	private Lot lot;
 	private Player owner;
 	private String letter;
-	
-	//TODO ready to plow, ready to harvest
-	
+
+	private enum Status {
+		EMPTY, PLOUGH, HARVESTED, HASBUILDING
+	};
+
+	private Status status;
+
 	public boolean buySection(Player player) {
-		
-		if(owner != null) {
-			System.out.println("this section has an owner already");
+
+		if (this.owner != null) {
+			System.out.println("this section has an owner already.");
 			return false;
-		} else if(lot.getOwner() != null && !lot.getOwner().equals(player)) {
-			System.out.println("you cannot purchase this section, because it is located in opponents lot");
+		} else if (lot.getOwner() != null && !lot.getOwner().equals(player)) {
+			System.out.println("you cannot purchase this section, because it is located in opponents lot.");
 			return false;
-		} else if(player.getCoin() < Currency.SECTION_BUY_COIN) {
-			System.out.println("you cannot purchase this section, you dont have enough coins");
+		} else if (player.getCoin() < Currency.SECTION_BUY_COIN) {
+			System.out.println("you cannot purchase this section, you dont have enough coins.");
+			return false;
+		}
+
+		int coin = player.getCoin();
+		coin = coin - Currency.SECTION_BUY_COIN;
+		player.setCoin(coin);
+
+		int xp = player.getXp();
+		xp += Currency.SECTION_BUY_XP;
+		player.setXp(xp);
+
+		return true;
+	}
+
+	public boolean sellSection(Player player) {
+		if(this.owner != player) {
+			System.out.println("you cannot sell this section that you don't own.");
+		} else if(Status.HARVESTED.equals(this.status) || Status.HASBUILDING.equals(this.status)) {
+			System.out.println("you cannot sell this section that it not empty.");
 			return false;
 		}
 		
 		int coin = player.getCoin();
-		coin = coin - Currency.SECTION_BUY_COIN;
+		coin = coin + Currency.SECTION_SELL_COIN;
 		player.setCoin(coin);
 		
 		int xp = player.getXp();
-		xp += Currency.SECTION_BUY_XP;
+		xp += Currency.SECTION_SELL_XP;
 		player.setXp(xp);
-		
+
 		return true;
-	}
-	
-public boolean sellSection(Player player) {
-		
-		return false;
 	}
 
 	public String getCoordinate() {
