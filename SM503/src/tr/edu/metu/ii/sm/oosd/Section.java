@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import tr.edu.metu.ii.sm.oosd.persistance.Action;
 import tr.edu.metu.ii.sm.oosd.persistance.Action.Type;
+import tr.edu.metu.ii.sm.oosd.persistance.Crop;
 
 public class Section {
 
@@ -17,6 +18,7 @@ public class Section {
 	};
 
 	private Status status;
+	private Crop crop;
 
 	public boolean buySection(Player player) {
 		
@@ -65,6 +67,19 @@ public class Section {
 		player.setXp(xp);
 
 		return true;
+	}
+	
+	public boolean plow() {
+		
+		return false;
+	}
+	
+	public boolean plant(Crop crop) {
+		
+		this.crop = crop;
+		
+		
+		return false;
 	}
 
 	public String getCoordinate() {
