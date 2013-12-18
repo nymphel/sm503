@@ -2,7 +2,7 @@ package tr.edu.metu.ii.sm.oosd.persistance;
 
 import java.io.Serializable;
 
-public class Crop implements Serializable {
+public class CropData implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

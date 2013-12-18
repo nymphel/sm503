@@ -10,10 +10,10 @@ public class DataStore implements Serializable {
 
 	private static final long serialVersionUID = 962722147320943661L;
 
-	private HashMap<String,Crop> crops;
-	private HashMap<Action.Type,Action> actions;
-	private Building building;
-	private List<Employee> employees;
+	private HashMap<String,CropData> crops;
+	private HashMap<ActionData.Type,ActionData> actions;
+	private BuildingData building;
+	private List<EmployeeData> employees;
 	
 	private static DataStore instance;
 	
@@ -38,35 +38,35 @@ public class DataStore implements Serializable {
 	    instance = this;
 	}
 
-	public HashMap<String, Crop> getCrops() {
+	public HashMap<String, CropData> getCrops() {
 		return crops;
 	}
 
-	public void setCrops(HashMap<String, Crop> crops) {
+	public void setCrops(HashMap<String, CropData> crops) {
 		this.crops = crops;
 	}
 
-	public HashMap<Action.Type, Action> getActions() {
+	public HashMap<ActionData.Type, ActionData> getActions() {
 		return actions;
 	}
 
-	public void setActions(HashMap<Action.Type, Action> actions) {
+	public void setActions(HashMap<ActionData.Type, ActionData> actions) {
 		this.actions = actions;
 	}
 
-	public Building getBuilding() {
+	public BuildingData getBuilding() {
 		return building;
 	}
 
-	public void setBuilding(Building building) {
+	public void setBuilding(BuildingData building) {
 		this.building = building;
 	}
 
-	public List<Employee> getEmployees() {
+	public List<EmployeeData> getEmployees() {
 		return employees;
 	}
 
-	public void setEmployees(List<Employee> employees) {
+	public void setEmployees(List<EmployeeData> employees) {
 		this.employees = employees;
 	}
 

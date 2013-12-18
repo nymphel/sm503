@@ -4,8 +4,17 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
+import tr.edu.metu.ii.sm.oosd.persistance.ActionData;
+import tr.edu.metu.ii.sm.oosd.persistance.BuildingData;
+import tr.edu.metu.ii.sm.oosd.persistance.ConstructorData;
+import tr.edu.metu.ii.sm.oosd.persistance.CropData;
 import tr.edu.metu.ii.sm.oosd.persistance.DataStore;
+import tr.edu.metu.ii.sm.oosd.persistance.EmployeeData;
+import tr.edu.metu.ii.sm.oosd.persistance.FarmerData;
 
 public class UI {
 
@@ -44,12 +53,12 @@ public class UI {
 		}
 	}
 	
-/*	public static void setupSampleDataStore() throws Exception {
+public static void setupSampleDataStore() throws Exception {
 		
 		DataStore dataStore = DataStore.getInstance();
 
-		HashMap<String,Crop> crops = new HashMap<>();
-		Crop c = new Crop();
+		HashMap<String,CropData> crops = new HashMap<>();
+		CropData c = new CropData();
 		c.setName("wheat");
 		c.setCostToPlant(5);
 		c.setSalePrice(40);
@@ -58,26 +67,26 @@ public class UI {
 		crops.put(c.getName(), c);
 		dataStore.setCrops(crops);
 		
-		HashMap<Action.Type,Action> actions = new HashMap<>();
-		Action action = new Action();
-		action.setType(Action.Type.BUY_SECTION);
+		HashMap<ActionData.Type,ActionData> actions = new HashMap<>();
+		ActionData action = new ActionData();
+		action.setType(ActionData.Type.BUY_SECTION);
 		action.setCost(100);
 		action.setXpGained(20);
 		actions.put(action.getType(),action);
 		dataStore.setActions(actions);
 		
-		Building building = new Building();
+		BuildingData building = new BuildingData();
 		building.setTimeToConstruct(8);
 		building.setXpIncome(4);
 		building.setCoinIncome(1);
 		dataStore.setBuilding(building);
 		
-		List<Employee> employees = new ArrayList<>();
-		Employee farmer = new Farmer();
+		List<EmployeeData> employees = new ArrayList<>();
+		EmployeeData farmer = new FarmerData();
 		farmer.setCost(10);
 		employees.add(farmer);
 		
-		Constructor constructor = new Constructor();
+		ConstructorData constructor = new ConstructorData();
 		constructor.setCost(12);
 		employees.add(constructor);
 		dataStore.setEmployees(employees);
@@ -85,5 +94,4 @@ public class UI {
 		saveDataStore();
 	}
 
-*/
 }

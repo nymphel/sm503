@@ -2,7 +2,7 @@ package tr.edu.metu.ii.sm.oosd.persistance;
 
 import java.io.Serializable;
 
-public class Action implements Serializable {
+public class ActionData implements Serializable {
 
 	private static final long serialVersionUID = -4944378382871918644L;
 

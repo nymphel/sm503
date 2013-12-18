@@ -2,9 +2,8 @@ package tr.edu.metu.ii.sm.oosd;
 
 import java.util.HashMap;
 
-import tr.edu.metu.ii.sm.oosd.persistance.Action;
-import tr.edu.metu.ii.sm.oosd.persistance.Action.Type;
-import tr.edu.metu.ii.sm.oosd.persistance.Crop;
+import tr.edu.metu.ii.sm.oosd.persistance.ActionData;
+import tr.edu.metu.ii.sm.oosd.persistance.ActionData.Type;
 import tr.edu.metu.ii.sm.oosd.persistance.DataStore;
 
 public class Section {
@@ -19,12 +18,11 @@ public class Section {
 	};
 
 	private Status status;
-	private Crop crop;
 
 	public boolean buySection(Player player) {
 		
-		HashMap<Type, Action> actions = DataStore.getInstance().getActions();
-		Action action = actions.get(Type.BUY_SECTION);
+		HashMap<Type, ActionData> actions = DataStore.getInstance().getActions();
+		ActionData action = actions.get(Type.BUY_SECTION);
 		
 		if (this.owner != null) {
 			System.out.println("this section has an owner already.");
@@ -56,8 +54,8 @@ public class Section {
 			return false;
 		}
 		
-		HashMap<Type, Action> actions = DataStore.getInstance().getActions();
-		Action action = actions.get(Type.SELL_SECTION);
+		HashMap<Type, ActionData> actions = DataStore.getInstance().getActions();
+		ActionData action = actions.get(Type.SELL_SECTION);
 		
 		int coin = player.getCoin();
 		coin = coin + action.getCost();
@@ -75,13 +73,6 @@ public class Section {
 		return false;
 	}
 	
-	public boolean plant(Crop crop) {
-		
-		this.crop = crop;
-		
-		
-		return false;
-	}
 
 	public String getCoordinate() {
 		return coordinate;

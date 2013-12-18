@@ -2,7 +2,7 @@ package tr.edu.metu.ii.sm.oosd.persistance;
 
 import java.io.Serializable;
 
-public class Farmer implements Employee, Serializable {
+public class FarmerData implements EmployeeData, Serializable {
 
 	private static final long serialVersionUID = 4815172621448781316L;
 	

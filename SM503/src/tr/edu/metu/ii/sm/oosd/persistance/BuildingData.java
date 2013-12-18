@@ -2,7 +2,7 @@ package tr.edu.metu.ii.sm.oosd.persistance;
 
 import java.io.Serializable;
 
-public class Building implements Serializable {
+public class BuildingData implements Serializable {
 
 	private static final long serialVersionUID = -5342744623558426336L;
 	
