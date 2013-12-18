@@ -1,6 +1,5 @@
 package tr.edu.metu.ii.sm.oosd;
 
-import tr.edu.metu.ii.sm.oosd.persistance.DataStore;
 
 public class FarmGame {
 
@@ -8,8 +7,6 @@ public class FarmGame {
 	private static final int STARTING_COIN = 0;
 
 	private static FarmGame instance;
-	
-	private DataStore dataStore;
 
 	private FarmGame() {
 		
@@ -59,15 +56,5 @@ public class FarmGame {
 			}
 		}
 	}
-
-	public DataStore getDataStore() {
-		return dataStore;
-	}
-
-	public void setDataStore(DataStore dataStore) {
-		this.dataStore = dataStore;
-	}
-
-	
 
 }

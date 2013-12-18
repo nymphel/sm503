@@ -5,6 +5,7 @@ import java.util.HashMap;
 import tr.edu.metu.ii.sm.oosd.persistance.Action;
 import tr.edu.metu.ii.sm.oosd.persistance.Action.Type;
 import tr.edu.metu.ii.sm.oosd.persistance.Crop;
+import tr.edu.metu.ii.sm.oosd.persistance.DataStore;
 
 public class Section {
 
@@ -22,7 +23,7 @@ public class Section {
 
 	public boolean buySection(Player player) {
 		
-		HashMap<Type, Action> actions = FarmGame.getInstance().getDataStore().getActions();
+		HashMap<Type, Action> actions = DataStore.getInstance().getActions();
 		Action action = actions.get(Type.BUY_SECTION);
 		
 		if (this.owner != null) {
@@ -55,7 +56,7 @@ public class Section {
 			return false;
 		}
 		
-		HashMap<Type, Action> actions = FarmGame.getInstance().getDataStore().getActions();
+		HashMap<Type, Action> actions = DataStore.getInstance().getActions();
 		Action action = actions.get(Type.SELL_SECTION);
 		
 		int coin = player.getCoin();
