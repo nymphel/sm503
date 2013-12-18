@@ -32,23 +32,23 @@ public class CropData implements Serializable {
 		return timeToHarvest;
 	}
 
-	public void setName(String name) {
+	protected void setName(String name) {
 		this.name = name;
 	}
 
-	public void setCostToPlant(int costToPlant) {
+	protected void setCostToPlant(int costToPlant) {
 		this.costToPlant = costToPlant;
 	}
 
-	public void setSalePrice(int salePrice) {
+	protected void setSalePrice(int salePrice) {
 		this.salePrice = salePrice;
 	}
 
-	public void setXpGainedWhenHarvested(int xpGainedWhenHarvested) {
+	protected void setXpGainedWhenHarvested(int xpGainedWhenHarvested) {
 		this.xpGainedWhenHarvested = xpGainedWhenHarvested;
 	}
 
-	public void setTimeToHarvest(int timeToHarvest) {
+	protected void setTimeToHarvest(int timeToHarvest) {
 		this.timeToHarvest = timeToHarvest;
 	}
 

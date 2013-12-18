@@ -18,7 +18,7 @@ public class ActionData implements Serializable {
 		return type;
 	}
 
-	public void setType(Type type) {
+	protected void setType(Type type) {
 		this.type = type;
 	}
 
@@ -26,7 +26,7 @@ public class ActionData implements Serializable {
 		return cost;
 	}
 
-	public void setCost(int cost) {
+	protected void setCost(int cost) {
 		this.cost = cost;
 	}
 
@@ -34,7 +34,7 @@ public class ActionData implements Serializable {
 		return xpGained;
 	}
 
-	public void setXpGained(int xpGained) {
+	protected void setXpGained(int xpGained) {
 		this.xpGained = xpGained;
 	}
 

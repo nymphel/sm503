@@ -22,15 +22,15 @@ public class BuildingData implements Serializable {
 		return coinIncome;
 	}
 
-	public void setTimeToConstruct(int timeToConstruct) {
+	protected void setTimeToConstruct(int timeToConstruct) {
 		this.timeToConstruct = timeToConstruct;
 	}
 
-	public void setXpIncome(int xpIncome) {
+	protected void setXpIncome(int xpIncome) {
 		this.xpIncome = xpIncome;
 	}
 
-	public void setCoinIncome(int coinIncome) {
+	protected void setCoinIncome(int coinIncome) {
 		this.coinIncome = coinIncome;
 	}
 

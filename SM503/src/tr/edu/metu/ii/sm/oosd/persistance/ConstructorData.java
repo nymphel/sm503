@@ -12,7 +12,7 @@ public class ConstructorData implements EmployeeData, Serializable {
 		return cost;
 	}
 
-	public void setCost(int cost) {
+	protected void setCost(int cost) {
 		this.cost = cost;
 	}
 
