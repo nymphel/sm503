@@ -13,15 +13,13 @@ public class Section {
 	private Player owner;
 	private String letter;
 
-	private enum Status {
-		EMPTY, PLOUGH, HARVESTED, HASBUILDING
-	};
-
-	private Status status;
+	private Crop activeCrop;
+	private Building activeBuilding;
+	
+	private HashMap<Type, ActionData> actionData = DataStore.getInstance().getActionData();
 
 	public boolean buySection(Player player) {
 		
-		HashMap<Type, ActionData> actionData = DataStore.getInstance().getActionData();
 		ActionData action = actionData.get(Type.BUY_SECTION);
 		
 		if (this.owner != null) {
@@ -35,13 +33,7 @@ public class Section {
 			return false;
 		}
 
-		int coin = player.getCoin();
-		coin = coin - action.getCost();
-		player.setCoin(coin);
-
-		int xp = player.getXp();
-		xp += action.getXpGained();
-		player.setXp(xp);
+		affectPlayer(player, action);
 
 		return true;
 	}
@@ -49,28 +41,47 @@ public class Section {
 	public boolean sellSection(Player player) {
 		if(this.owner != player) {
 			System.out.println("you cannot sell this section that you don't own.");
-		} else if(Status.HARVESTED.equals(this.status) || Status.HASBUILDING.equals(this.status)) {
+		} else if(this.activeCrop != null || this.activeBuilding != null) {
 			System.out.println("you cannot sell this section that it not empty.");
 			return false;
 		}
 		
-		HashMap<Type, ActionData> actionData = DataStore.getInstance().getActionData();
 		ActionData action = actionData.get(Type.SELL_SECTION);
 		
-		int coin = player.getCoin();
-		coin = coin + action.getCost();
-		player.setCoin(coin);
-		
-		int xp = player.getXp();
-		xp += action.getXpGained();
-		player.setXp(xp);
+		affectPlayer(player, action);
 
 		return true;
 	}
 	
-	public boolean plow() {
+	public boolean plow(Player player) {
+		//TODO: validation
+		ActionData action = actionData.get(Type.PLOW);
+		affectPlayer(player, action);
 		
 		return false;
+	}
+	
+	public boolean plant(Player player, Crop crop) {
+		//TODO: validation
+		ActionData action = actionData.get(Type.HARVEST);
+		affectPlayer(player, action);
+		
+		return false;
+	}
+	
+	public boolean harvest(Player player, Crop crop) {
+		
+		return false;
+	}
+	
+	private void affectPlayer(Player player, ActionData action) {
+		int coin = player.getCoin();
+		coin = coin - action.getCost();
+		player.setCoin(coin);
+
+		int xp = player.getXp();
+		xp += action.getXpGained();
+		player.setXp(xp);
 	}
 	
 
