@@ -21,8 +21,8 @@ public class Section {
 
 	public boolean buySection(Player player) {
 		
-		HashMap<Type, ActionData> actions = DataStore.getInstance().getActions();
-		ActionData action = actions.get(Type.BUY_SECTION);
+		HashMap<Type, ActionData> actionData = DataStore.getInstance().getActionData();
+		ActionData action = actionData.get(Type.BUY_SECTION);
 		
 		if (this.owner != null) {
 			System.out.println("this section has an owner already.");
@@ -54,8 +54,8 @@ public class Section {
 			return false;
 		}
 		
-		HashMap<Type, ActionData> actions = DataStore.getInstance().getActions();
-		ActionData action = actions.get(Type.SELL_SECTION);
+		HashMap<Type, ActionData> actionData = DataStore.getInstance().getActionData();
+		ActionData action = actionData.get(Type.SELL_SECTION);
 		
 		int coin = player.getCoin();
 		coin = coin + action.getCost();

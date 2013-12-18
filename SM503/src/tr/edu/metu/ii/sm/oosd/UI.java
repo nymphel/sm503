@@ -65,7 +65,7 @@ public static void setupSampleDataStore() throws Exception {
 		c.setXpGainedWhenHarvested(11);
 		c.setTimeToHarvest(10);
 		crops.put(c.getName(), c);
-		dataStore.setCrops(crops);
+		dataStore.setCropData(crops);
 		
 		HashMap<ActionData.Type,ActionData> actions = new HashMap<>();
 		ActionData action = new ActionData();
@@ -73,13 +73,13 @@ public static void setupSampleDataStore() throws Exception {
 		action.setCost(100);
 		action.setXpGained(20);
 		actions.put(action.getType(),action);
-		dataStore.setActions(actions);
+		dataStore.setActionData(actions);
 		
 		BuildingData building = new BuildingData();
 		building.setTimeToConstruct(8);
 		building.setXpIncome(4);
 		building.setCoinIncome(1);
-		dataStore.setBuilding(building);
+		dataStore.setBuildingData(building);
 		
 		List<EmployeeData> employees = new ArrayList<>();
 		EmployeeData farmer = new FarmerData();
@@ -89,7 +89,7 @@ public static void setupSampleDataStore() throws Exception {
 		ConstructorData constructor = new ConstructorData();
 		constructor.setCost(12);
 		employees.add(constructor);
-		dataStore.setEmployees(employees);
+		dataStore.setEmployeeData(employees);
 		
 		saveDataStore();
 	}
