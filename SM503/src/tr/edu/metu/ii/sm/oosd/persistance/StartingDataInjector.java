@@ -8,15 +8,15 @@ public static void setupSampleDataStore() throws Exception {
 		
 		DataStore dataStore = DataStore.getInstance();
 
-		HashMap<String,CropData> crops = new HashMap<>();
-		CropData c = new CropData();
-		c.setName("wheat");
-		c.setCostToPlant(5);
-		c.setSalePrice(40);
-		c.setXpGainedWhenHarvested(11);
-		c.setTimeToHarvest(10);
-		crops.put(c.getName(), c);
-		dataStore.setCropData(crops);
+		HashMap<String,SeedData> seeds = new HashMap<>();
+		SeedData seed = new SeedData();
+		seed.setName("wheat");
+		seed.setCostToPlant(5);
+		seed.setSalePrice(40);
+		seed.setXpGainedWhenHarvested(11);
+		seed.setTimeToHarvest(10);
+		seeds.put(seed.getName(), seed);
+		dataStore.setSeedData(seeds);
 		
 		HashMap<ActionData.Type,ActionData> actions = new HashMap<>();
 		ActionData action = new ActionData();

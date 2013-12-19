@@ -4,13 +4,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.List;
 
 public class DataStore implements Serializable {
 
 	private static final long serialVersionUID = 962722147320943661L;
 
-	private HashMap<String,CropData> cropData;
+	private HashMap<String,SeedData> seedData;
 	private HashMap<ActionData.Type,ActionData> actionData;
 	private BuildingData buildingData;
 	private HashMap<String,EmployeeData> employeeData;
@@ -38,12 +37,12 @@ public class DataStore implements Serializable {
 	    instance = this;
 	}
 
-	public HashMap<String, CropData> getCropData() {
-		return cropData;
+	public HashMap<String, SeedData> getSeedData() {
+		return seedData;
 	}
 
-	public void setCropData(HashMap<String, CropData> cropData) {
-		this.cropData = cropData;
+	public void setSeedData(HashMap<String, SeedData> seedData) {
+		this.seedData = seedData;
 	}
 
 	public HashMap<ActionData.Type, ActionData> getActionData() {

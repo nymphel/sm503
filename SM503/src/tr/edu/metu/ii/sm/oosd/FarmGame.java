@@ -44,17 +44,31 @@ public class FarmGame {
 	}
 
 	public boolean buySection(Player player, String coordinate) {
-		Section selectedSession = this.farmArea.selectSection(coordinate);
-		return selectedSession.buySection(player);
+		Section selectedSection = this.farmArea.selectSection(coordinate);
+		return selectedSection.buySection(player);
 	}
 	
 	public boolean sellSection(Player player, String coordinate) {
-		Section selectedSession = this.farmArea.selectSection(coordinate);
-		return selectedSession.sellSection(player);
+		Section selectedSection = this.farmArea.selectSection(coordinate);
+		return selectedSection.sellSection(player);
 	}
 	
 	public boolean recruitEmployee(Player player, Employee employee) {
 		return employee.recruit(player);
+	}
+	
+	public boolean fireEmployee(Player player, Employee employee) {
+		return employee.fire(player);
+	}
+	
+	public boolean plowSection(Player player, String coordinate, Employee employee) {
+		Section selectedSection = this.farmArea.selectSection(coordinate);
+		return selectedSection.plow(player, employee);
+	}
+	
+	public boolean plantSeed(Player player, String coordinate, String seed, Employee employee) {
+		Section selectedSection = this.farmArea.selectSection(coordinate);
+		return selectedSection.plant(player, seed, employee);
 	}
 
 }

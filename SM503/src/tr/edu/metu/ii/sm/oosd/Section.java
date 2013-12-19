@@ -53,23 +53,26 @@ public class Section {
 		return true;
 	}
 	
-	public boolean plow(Player player) {
+	public boolean plow(Player player, Employee employee) {
 		//TODO: validation
+		//TODO assign emp
 		ActionData action = actionData.get(Type.PLOW);
 		affectPlayer(player, action);
 		
 		return false;
 	}
 	
-	public boolean plant(Player player, Crop crop) {
+	public boolean plant(Player player, String seed, Employee employee) {
 		//TODO: validation
-		ActionData action = actionData.get(Type.HARVEST);
+		//TODO assign emp
+		//TODO: create a crop according to seed type
+		ActionData action = actionData.get(Type.PLANT);
 		affectPlayer(player, action);
 		
 		return false;
 	}
 	
-	public boolean harvest(Player player, Crop crop) {
+	public boolean harvest(Player player, Crop crop, Employee employee) {
 		
 		return false;
 	}
