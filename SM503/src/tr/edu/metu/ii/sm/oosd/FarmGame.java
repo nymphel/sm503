@@ -43,18 +43,18 @@ public class FarmGame {
 
 	}
 
-	public void startGame() {
-		while (true) {
-			player1.takeTurn();
-			if (this.farmArea.allSectionsOccupied()) {
-				break;
-			}
-
-			player2.takeTurn();
-			if (this.farmArea.allSectionsOccupied()) {
-				break;
-			}
-		}
+	public boolean buySection(Player player, String coordinate) {
+		Section selectedSession = this.farmArea.selectSection(coordinate);
+		return selectedSession.buySection(player);
+	}
+	
+	public boolean sellSection(Player player, String coordinate) {
+		Section selectedSession = this.farmArea.selectSection(coordinate);
+		return selectedSession.sellSection(player);
+	}
+	
+	public boolean recruitEmployee(Player player, Employee employee) {
+		return employee.recruit(player);
 	}
 
 }

@@ -1,8 +1,6 @@
 package tr.edu.metu.ii.sm.oosd.persistance;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class StartingDataInjector {
 	
@@ -34,14 +32,16 @@ public static void setupSampleDataStore() throws Exception {
 		building.setCoinIncome(1);
 		dataStore.setBuildingData(building);
 		
-		List<EmployeeData> employees = new ArrayList<>();
-		FarmerData farmer = new FarmerData();
+		HashMap<String, EmployeeData> employees = new HashMap<>();
+		EmployeeData farmer = new EmployeeData();
+		farmer.setType("Farmer");
 		farmer.setCost(10);
-		employees.add(farmer);
+		employees.put(farmer.getType(), farmer);
 		
-		ConstructorData constructor = new ConstructorData();
+		EmployeeData constructor = new EmployeeData();
+		constructor.setType("Constructor");
 		constructor.setCost(12);
-		employees.add(constructor);
+		employees.put(constructor.getType(), constructor);
 		dataStore.setEmployeeData(employees);
 		
 	}

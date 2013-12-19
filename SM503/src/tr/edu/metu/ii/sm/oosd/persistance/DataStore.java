@@ -13,7 +13,7 @@ public class DataStore implements Serializable {
 	private HashMap<String,CropData> cropData;
 	private HashMap<ActionData.Type,ActionData> actionData;
 	private BuildingData buildingData;
-	private List<EmployeeData> employeeData;
+	private HashMap<String,EmployeeData> employeeData;
 	
 	private static DataStore instance;
 	
@@ -62,14 +62,13 @@ public class DataStore implements Serializable {
 		this.buildingData = buildingData;
 	}
 
-	public List<EmployeeData> getEmployeeData() {
+	public HashMap<String, EmployeeData> getEmployeeData() {
 		return employeeData;
 	}
 
-	public void setEmployeeData(List<EmployeeData> employeeData) {
+	public void setEmployeeData(HashMap<String, EmployeeData> employeeData) {
 		this.employeeData = employeeData;
 	}
 
-	
 	
 }

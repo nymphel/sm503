@@ -1,7 +1,28 @@
 package tr.edu.metu.ii.sm.oosd.persistance;
 
-public interface EmployeeData {
+import java.io.Serializable;
+
+public class EmployeeData implements  Serializable {
+
+	private static final long serialVersionUID = 4815172621448781316L;
 	
-	public int getCost();
+	private int cost;
+	private String type;
+
+	public int getCost() {
+		return cost;
+	}
+
+	protected void setCost(int cost) {
+		this.cost = cost;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 }
