@@ -4,7 +4,7 @@ package tr.edu.metu.ii.sm.oosd;
 public class FarmGame {
 
 	private static final int STARTING_XP = 0;
-	private static final int STARTING_COIN = 0;
+	private static final int STARTING_COIN = 50;
 
 	private static FarmGame instance;
 
@@ -14,6 +14,7 @@ public class FarmGame {
 
 	private Player player1;
 	private Player player2;
+	private Player activePlayer;
 	
 	private FarmArea farmArea;
 
@@ -40,6 +41,8 @@ public class FarmGame {
 		farmArea = new FarmArea();
 		farmArea.prepareFarmArea();
 		farmArea.placePlayers(player1, player2);
+		
+		this.activePlayer = player1;
 
 	}
 
@@ -87,6 +90,48 @@ public class FarmGame {
 	public boolean teardownBuilding(Player player, String coordinate, Employee employee) {
 		Section selectedSection = this.farmArea.selectSection(coordinate);
 		return selectedSection.teardownBuilding(player, employee);
+	}
+
+	public boolean isGameFinished() {
+		return this.farmArea.allSectionsOccupied();
+	}
+	
+	public void showLayout() {
+		this.farmArea.printFarmArea();
+	}
+
+	public Player getActivePlayer() {
+		return activePlayer;
+	}
+
+	public void setActivePlayer(Player activePlayer) {
+		this.activePlayer = activePlayer;
+	}
+
+	public void computeRound() {
+		// TODO Auto-generated method stub
+		
+		if(activePlayer.equals(player1)) {
+			this.activePlayer = player2;
+		} else {
+			this.activePlayer = player1;
+		}
+		
+	}
+
+	public void showResults() {
+		System.out.println(player1.getName() +" has "+player1.getXp()+" XP");
+		System.out.println(player2.getName() +" has "+player2.getXp()+" XP");
+		
+		String winner = "We have no winner, xp rates are equal.";
+		if(player1.getXp() > player2.getXp()) {
+			winner = "The winner is: " + player1.getName();
+		} else if(player1.getXp() < player2.getXp()) {
+			winner = "The winner is: " + player2.getName();
+		} 
+		
+		System.out.println(winner);
+		
 	}
 
 }
