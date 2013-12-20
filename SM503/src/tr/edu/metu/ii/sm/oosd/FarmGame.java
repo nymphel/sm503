@@ -43,6 +43,8 @@ public class FarmGame {
 
 	}
 
+	//Controller actions 
+	
 	public boolean buySection(Player player, String coordinate) {
 		Section selectedSection = this.farmArea.selectSection(coordinate);
 		return selectedSection.buySection(player);
