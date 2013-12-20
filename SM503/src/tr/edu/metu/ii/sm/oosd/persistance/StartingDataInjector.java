@@ -28,7 +28,7 @@ public static void setupSampleDataStore() throws Exception {
 		
 		BuildingData building = new BuildingData();
 		building.setTimeToConstruct(8);
-		building.setXpIncome(4);
+		building.setXpWhenCompleted(4);
 		building.setCoinIncome(1);
 		dataStore.setBuildingData(building);
 		

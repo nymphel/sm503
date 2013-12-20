@@ -70,5 +70,21 @@ public class FarmGame {
 		Section selectedSection = this.farmArea.selectSection(coordinate);
 		return selectedSection.plant(player, seed, employee);
 	}
+	
+	public boolean harvestSection(Player player, String coordinate, Employee employee) {
+		Section selectedSection = this.farmArea.selectSection(coordinate);
+		return selectedSection.harvest(player, employee);
+	}
+	
+	
+	public boolean constructBuilding(Player player, String coordinate, Employee employee) {
+		Section selectedSection = this.farmArea.selectSection(coordinate);
+		return selectedSection.constructBuilding(player, employee);
+	}
+	
+	public boolean teardownBuilding(Player player, String coordinate, Employee employee) {
+		Section selectedSection = this.farmArea.selectSection(coordinate);
+		return selectedSection.teardownBuilding(player, employee);
+	}
 
 }
