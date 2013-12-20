@@ -36,6 +36,8 @@ public class Section {
 			System.out.println("you cannot purchase this section, you dont have enough coins.");
 			return false;
 		}
+		
+		this.owner = player;
 
 		affectPlayer(player, action);
 
@@ -51,8 +53,9 @@ public class Section {
 			return false;
 		}
 		
-		ActionData action = actionData.get(Type.SELL_SECTION);
+		this.owner = null;
 		
+		ActionData action = actionData.get(Type.SELL_SECTION);
 		affectPlayer(player, action);
 
 		return true;

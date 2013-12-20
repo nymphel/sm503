@@ -4,7 +4,7 @@ package tr.edu.metu.ii.sm.oosd;
 public class FarmGame {
 
 	private static final int STARTING_XP = 0;
-	private static final int STARTING_COIN = 50;
+	private static final int STARTING_COIN = 150;
 
 	private static FarmGame instance;
 
@@ -132,6 +132,11 @@ public class FarmGame {
 		
 		System.out.println(winner);
 		
+	}
+
+	public boolean isValidSelection(String coordinate) {
+		Section selectSection = this.farmArea.selectSection(coordinate);
+		return (selectSection != null ? true: false);
 	}
 
 }

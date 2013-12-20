@@ -13,7 +13,7 @@ import tr.edu.metu.ii.sm.oosd.persistance.DataStore;
 public class UI {
 
 	public static final String fileName = "D:\\objects.dat";
-	public static final int TIMEOUT = 10;
+	public static final int TIMEOUT = 3;
 
 	public static void main(String[] args) {
 		try {
@@ -48,6 +48,16 @@ public class UI {
 	}
 
 	private static void interpret(Player activePlayer) {
+		String input = readLine();
+
+		boolean interpretCommand = interpretCommand(input, activePlayer);
+		if(!interpretCommand) {
+			System.out.println("Please enter a command again:");
+			interpret(activePlayer);
+		}
+	}
+
+	private static String readLine() {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input = "";
 		try {
@@ -55,19 +65,49 @@ public class UI {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		boolean interpretCommand = interpretCommand(input, activePlayer);
-		if(!interpretCommand) {
-			interpret(activePlayer);
-		}
+		return input;
 	}
 
 	private static boolean interpretCommand(String input, Player activePlayer) {
-		System.out.println(input);
+		FarmGame farmGame = FarmGame.getInstance();
+		String coordinate;
+		
+		switch(input) {
+		
+		case "pass":
+			return true;
+			
+		case "buy section":
+			coordinate = selectSection();
+			if(coordinate == null) {
+				return false;
+			}
+			return farmGame.buySection(activePlayer, coordinate);
+			
+		case "sell section":
+			coordinate = selectSection();
+			if(coordinate == null) {
+				return false;
+			}
+			return farmGame.sellSection(activePlayer, coordinate);
+			
+		}
+		
 		//switch case 
 		//pass 
 		return true;
 		
+	}
+
+	private static String selectSection() {
+		System.out.println("Please enter a section coordinate: ");
+		String coordinate = readLine();
+		boolean validSelection = FarmGame.getInstance().isValidSelection(coordinate);
+		if(!validSelection) {
+			System.out.println("There is no section with given coodinate" + coordinate);
+			return null;
+		}
+		return coordinate;
 	}
 
 	public static void loadDataStore() throws Exception {
