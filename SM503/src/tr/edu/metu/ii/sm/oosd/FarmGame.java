@@ -28,12 +28,12 @@ public class FarmGame {
 
 	public void prepareGame() {
 
-		player1 = new Player();
+		player1 = new Player1();
 		player1.setName("player-1");
 		player1.setCoin(STARTING_COIN);
 		player1.setXp(STARTING_XP);
 
-		player2 = new Player();
+		player2 = new Player2();
 		player2.setName("player-2");
 		player2.setCoin(STARTING_COIN);
 		player2.setXp(STARTING_XP);

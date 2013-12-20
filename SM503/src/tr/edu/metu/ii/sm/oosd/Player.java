@@ -3,7 +3,7 @@ package tr.edu.metu.ii.sm.oosd;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class Player {
+public abstract class Player {
 	
 	private String name;
 	private int coin;
@@ -12,8 +12,10 @@ public class Player {
 	private HashMap<UUID, Employee> employees = new HashMap<>();
 	
 	public void takeTurn() {
-		
+		//TODO: players can take turn by entering commands
 	}
+	
+	public abstract boolean uppercase();
 
 	public String getName() {
 		return name;
