@@ -111,7 +111,7 @@ public class Section {
 		
 		//plowing is over
 		this.plaught = false;
-		
+		setLetter(seed.substring(0, 2));
 		
 		ActionData action = actionData.get(Type.PLANT);
 		changePlayerCurrency(player, action);
@@ -122,10 +122,6 @@ public class Section {
 	private boolean plantSeed(Player player, String seed) {
 		HashMap<String, SeedData> seedData = DataStore.getInstance().getSeedData();
 		SeedData sData = seedData.get(seed);
-		
-		if(sData == null) {
-			//TODO
-		}
 		
 		int costToPlant = sData.getCostToPlant();
 		if (this.owner.getCoin() < costToPlant) {

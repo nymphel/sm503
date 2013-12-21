@@ -1,5 +1,10 @@
 package tr.edu.metu.ii.sm.oosd;
 
+import java.util.HashMap;
+
+import tr.edu.metu.ii.sm.oosd.persistance.DataStore;
+import tr.edu.metu.ii.sm.oosd.persistance.SeedData;
+
 
 public class FarmGame {
 
@@ -100,4 +105,20 @@ public class FarmGame {
 		return (selectSection != null ? true: false);
 	}
 
+	public boolean isValidSeed(String seed) {
+		HashMap<String, SeedData> seedData = DataStore.getInstance().getSeedData();
+		SeedData sData = seedData.get(seed);
+		return (sData != null ? true : false);
+	}
+
+	public String getAvailableSeeds() {
+		String seeds = "";
+		HashMap<String, SeedData> seedData = DataStore.getInstance().getSeedData();
+		for (String key : seedData.keySet()) {
+			seeds += key + " | ";
+		}
+		
+		return seeds;
+		
+	}
 }
