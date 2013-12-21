@@ -12,7 +12,7 @@ import tr.edu.metu.ii.sm.oosd.persistance.DataStore;
 
 public class UI {
 
-	public static final String fileName = "D:\\objects.dat";
+	public static final String fileName = "C:\\objects.dat";
 	public static final int TIMEOUT = 100;
 
 	public static void main(String[] args) {
