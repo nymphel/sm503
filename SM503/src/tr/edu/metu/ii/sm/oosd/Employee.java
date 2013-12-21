@@ -27,14 +27,11 @@ public abstract class Employee {
 			return false;
 		}
 		
-		int coin = player.getCoin();
-		coin = coin - cost;
-		player.setCoin(coin);
-		
 		this.id = UUID.randomUUID();
 		this.owner = player;
 		this.owner.registerEmployee(this);
 		
+		player.charge(cost);
 		
 		System.out.println("Employee is recruited by "+ player.getName());
 		return true;

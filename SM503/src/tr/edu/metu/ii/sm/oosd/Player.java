@@ -13,8 +13,16 @@ public class Player {
 	
 	private HashMap<UUID, Employee> employees = new HashMap<>();
 	
-	public void takeTurn() {
-		//TODO: players can take turn by entering commands
+	public void addXp(int xp) {
+		this.xp += xp;
+	}
+	
+	public void addCoin(int coin) {
+		this.coin += coin;
+	}
+	
+	public void charge(int coin) {
+		this.coin -= coin;
 	}
 	
 	public boolean buySection(String coordinate) {

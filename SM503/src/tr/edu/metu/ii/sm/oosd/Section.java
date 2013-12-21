@@ -40,7 +40,7 @@ public class Section {
 		this.owner = player;
 		setLetter(player.getLetter());
 
-		affectPlayer(player, action);
+		changePlayerCurrency(player, action);
 		
 		System.out.println(this.coordinate+ " section is bought by "+ player.getName());
 
@@ -60,7 +60,7 @@ public class Section {
 		setLetter(null);
 		
 		ActionData action = actionData.get(Type.SELL_SECTION);
-		affectPlayer(player, action);
+		changePlayerCurrency(player, action);
 
 		System.out.println(this.coordinate+ " section is sold by "+ player.getName());
 		return true;
@@ -78,7 +78,7 @@ public class Section {
 		//TODO: what to do with farmer
 		
 		ActionData action = actionData.get(Type.PLOW);
-		affectPlayer(player, action);
+		changePlayerCurrency(player, action);
 		
 		this.plaught = true;
 		setLetter("pl");
@@ -114,7 +114,7 @@ public class Section {
 		
 		
 		ActionData action = actionData.get(Type.PLANT);
-		affectPlayer(player, action);
+		changePlayerCurrency(player, action);
 		
 		return true;
 	}
@@ -160,7 +160,7 @@ public class Section {
 		}
 		
 		ActionData action = actionData.get(Type.HARVEST);
-		affectPlayer(player, action);
+		changePlayerCurrency(player, action);
 		
 		this.activeCrop.harvest();
 		//no active crop
@@ -197,7 +197,7 @@ public class Section {
 		this.assignedEmployee = employee;
 		employee.setAssignedSection(this);
 		
-		affectPlayer(player, action);
+		changePlayerCurrency(player, action);
 		
 		return true;
 	}
@@ -222,19 +222,14 @@ public class Section {
 		this.assignedEmployee.setAssignedSection(null);
 		this.assignedEmployee = null;
 		
-		affectPlayer(player, action);
+		changePlayerCurrency(player, action);
 		
 		return true;
 	}
 	
-	private void affectPlayer(Player player, ActionData action) {
-		int coin = player.getCoin();
-		coin = coin - action.getCost();
-		player.setCoin(coin);
-
-		int xp = player.getXp();
-		xp += action.getXpGained();
-		player.setXp(xp);
+	private void changePlayerCurrency(Player player, ActionData action) {
+		player.charge(action.getCost());
+		player.addXp(action.getXpGained());
 	}
 	
 

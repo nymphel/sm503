@@ -20,14 +20,10 @@ public class Crop {
 	
 	public void harvest() {
 		int xpGainedWhenHarvested = seedData.getXpGainedWhenHarvested();
-		int xp = this.owner.getXp();
-		xp += xpGainedWhenHarvested;
-		this.owner.setXp(xp);
+		this.owner.addXp(xpGainedWhenHarvested);
 		
 		int salePrice = seedData.getSalePrice();
-		int coin = this.owner.getCoin();
-		coin += salePrice;
-		this.owner.setCoin(coin);
+		this.owner.addCoin(salePrice);
 	}
 	
 	public String getName() {

@@ -13,15 +13,13 @@ public class Building {
 		roundsBuilt ++;
 		if(buildingData.getTimeToConstruct() == roundsBuilt) {
 			this.completed = true;
-			int xp = this.owner.getXp();
-			xp += buildingData.getXpWhenCompleted();
-			this.owner.setXp(xp);
+			int xpWhenCompleted = buildingData.getXpWhenCompleted();
+			this.owner.addXp(xpWhenCompleted);
 		}
 		
 		if(completed) {
-			int coin = this.owner.getCoin();
-			coin += buildingData.getCoinIncome();
-			this.owner.setCoin(coin);
+			int coinIncome =buildingData.getCoinIncome();
+			this.owner.addCoin(coinIncome);
 		}
 		
 	}
