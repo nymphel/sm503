@@ -162,6 +162,8 @@ public class Section {
 		//no active crop
 		this.activeCrop = null;
 		
+		setLetter(player.getLetter());
+		
 		//resign employee
 		this.assignedEmployee.setAssignedSection(null);
 		this.assignedEmployee = null;
@@ -193,6 +195,8 @@ public class Section {
 		this.assignedEmployee = employee;
 		employee.setAssignedSection(this);
 		
+		setLetter("bu");
+		
 		changePlayerCurrency(player, action);
 		
 		return true;
@@ -217,6 +221,8 @@ public class Section {
 		//resign employee
 		this.assignedEmployee.setAssignedSection(null);
 		this.assignedEmployee = null;
+		
+		setLetter(player.getLetter());
 		
 		changePlayerCurrency(player, action);
 		
