@@ -38,8 +38,11 @@ public class Section {
 		}
 		
 		this.owner = player;
+		setLetter(player.getLetter());
 
 		affectPlayer(player, action);
+		
+		System.out.println(this.coordinate+ " section is bought by "+ player.getName());
 
 		return true;
 	}
@@ -54,10 +57,12 @@ public class Section {
 		}
 		
 		this.owner = null;
+		setLetter(null);
 		
 		ActionData action = actionData.get(Type.SELL_SECTION);
 		affectPlayer(player, action);
 
+		System.out.println(this.coordinate+ " section is sold by "+ player.getName());
 		return true;
 	}
 	
@@ -76,8 +81,10 @@ public class Section {
 		affectPlayer(player, action);
 		
 		this.plaught = true;
+		setLetter("pl");
 		
-		return false;
+		System.out.println(this.coordinate+ " section is plaught by "+ player.getName());
+		return true;
 	}
 	
 	public boolean plant(Player player, String seed, Employee employee) {
@@ -249,6 +256,9 @@ public class Section {
 	}
 
 	public String getLetter() {
+		if(this.letter != null && owner.isUppercase()) {
+			return this.letter.toUpperCase();
+		}
 		return letter;
 	}
 

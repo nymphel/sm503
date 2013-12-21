@@ -35,6 +35,8 @@ public abstract class Employee {
 		this.owner = player;
 		this.owner.registerEmployee(this);
 		
+		
+		System.out.println("Employee is recruited by "+ player.getName());
 		return true;
 	}
 	public boolean fire(Player player) {
@@ -46,6 +48,7 @@ public abstract class Employee {
 		}
 	
 		this.owner.unregisterEmployee(this);
+		System.out.println("Employee is fired by "+ player.getName());
 		return true;
 	}
 	

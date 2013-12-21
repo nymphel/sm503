@@ -13,7 +13,7 @@ import tr.edu.metu.ii.sm.oosd.persistance.DataStore;
 public class UI {
 
 	public static final String fileName = "D:\\objects.dat";
-	public static final int TIMEOUT = 3;
+	public static final int TIMEOUT = 6;
 
 	public static void main(String[] args) {
 		try {
@@ -71,6 +71,7 @@ public class UI {
 	private static boolean interpretCommand(String input, Player activePlayer) {
 		FarmGame farmGame = FarmGame.getInstance();
 		String coordinate;
+		Employee employee = null;
 		
 		switch(input) {
 		
@@ -90,13 +91,47 @@ public class UI {
 				return false;
 			}
 			return farmGame.sellSection(activePlayer, coordinate);
+		
+		case "recruit farmer":
+			return farmGame.recruitEmployee(activePlayer, new Farmer());
+		
+		case "recruit constructor":
+			return farmGame.recruitEmployee(activePlayer, new Constructor());
+		
+		case "plow":
+			coordinate = selectSection();
+			if(coordinate == null) {
+				return false;
+			}
 			
+			employee = selectEmployee(activePlayer, new Farmer());
+			if(employee == null) {
+				return false;
+			}
+			
+			Employee farmer = selectEmployee(activePlayer, new Farmer());
+			if(farmer == null) {
+				return false;
+			}
+			
+			return farmGame.plowSection(activePlayer, coordinate, farmer);
+			
+		default:
+			System.out.println("No command is defined with given value. Try again.");
+			return false;
 		}
 		
-		//switch case 
-		//pass 
-		return true;
+	}
+
+	private static Employee selectEmployee(Player activePlayer, Employee employeePrototype) {
+	
+		Employee employee = activePlayer.selectEmployee(employeePrototype);
+		if(employee != null) {
+			return employee;
+		}
 		
+		System.out.println("you don't have any employees available, recruit a new one");
+		return null;
 	}
 
 	private static String selectSection() {

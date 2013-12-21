@@ -3,11 +3,13 @@ package tr.edu.metu.ii.sm.oosd;
 import java.util.HashMap;
 import java.util.UUID;
 
-public abstract class Player {
+public class Player {
 	
 	private String name;
+	private String letter;
 	private int coin;
 	private int xp;
+	private boolean uppercase;
 	
 	private HashMap<UUID, Employee> employees = new HashMap<>();
 	
@@ -15,8 +17,6 @@ public abstract class Player {
 		//TODO: players can take turn by entering commands
 	}
 	
-	public abstract boolean uppercase();
-
 	public String getName() {
 		return name;
 	}
@@ -47,6 +47,31 @@ public abstract class Player {
 	
 	public void unregisterEmployee(Employee employee) {
 		employees.remove(employee.getId());
+	}
+
+	public boolean isUppercase() {
+		return uppercase;
+	}
+
+	public void setUppercase(boolean uppercase) {
+		this.uppercase = uppercase;
+	}
+
+	public String getLetter() {
+		return letter;
+	}
+
+	public void setLetter(String letter) {
+		this.letter = letter;
+	}
+
+	public Employee selectEmployee(Employee employeePrototype) {
+		for (Employee employee : employees.values()) {
+			if(employee.getClass().equals(employeePrototype.getClass())) {
+				return employee;
+			}
+		}
+		return null;
 	}
 
 }
