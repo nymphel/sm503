@@ -120,7 +120,9 @@ public class Player {
 	public Employee selectEmployee(Employee employeePrototype) {
 		for (Employee employee : employees.values()) {
 			if(employee.getClass().equals(employeePrototype.getClass())) {
-				return employee;
+				if(employee.getAssignedSection() == null) {
+					return employee;
+				}
 			}
 		}
 		return null;

@@ -13,7 +13,7 @@ import tr.edu.metu.ii.sm.oosd.persistance.DataStore;
 public class UI {
 
 	public static final String fileName = "D:\\objects.dat";
-	public static final int TIMEOUT = 10;
+	public static final int TIMEOUT = 100;
 
 	public static void main(String[] args) {
 		try {
@@ -153,10 +153,6 @@ public class UI {
 				return false;
 			}
 
-			employee = selectEmployee(activePlayer, new Farmer());
-			if (employee == null) {
-				return false;
-			}
 			return activePlayer.harvestSection(coordinate, employee);
 
 		case "construct building":
@@ -177,10 +173,6 @@ public class UI {
 				return false;
 			}
 
-			employee = selectEmployee(activePlayer, new Constructor());
-			if (employee == null) {
-				return false;
-			}
 			return activePlayer.teardownBuilding(coordinate, employee);
 
 		default:
