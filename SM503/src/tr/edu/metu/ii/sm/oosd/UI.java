@@ -69,7 +69,6 @@ public class UI {
 	}
 
 	private static boolean interpretCommand(String input, Player activePlayer) {
-		FarmGame farmGame = FarmGame.getInstance();
 		String coordinate;
 		Employee employee = null;
 		
@@ -83,20 +82,20 @@ public class UI {
 			if(coordinate == null) {
 				return false;
 			}
-			return farmGame.buySection(activePlayer, coordinate);
+			return activePlayer.buySection(coordinate);
 			
 		case "sell section":
 			coordinate = selectSection();
 			if(coordinate == null) {
 				return false;
 			}
-			return farmGame.sellSection(activePlayer, coordinate);
+			return activePlayer.sellSection(coordinate);
 		
 		case "recruit farmer":
-			return farmGame.recruitEmployee(activePlayer, new Farmer());
+			return activePlayer.recruitEmployee(new Farmer());
 		
 		case "recruit constructor":
-			return farmGame.recruitEmployee(activePlayer, new Constructor());
+			return activePlayer.recruitEmployee(new Constructor());
 		
 		case "plow":
 			coordinate = selectSection();
@@ -114,7 +113,7 @@ public class UI {
 				return false;
 			}
 			
-			return farmGame.plowSection(activePlayer, coordinate, farmer);
+			return activePlayer.plowSection(coordinate, farmer);
 			
 		default:
 			System.out.println("No command is defined with given value. Try again.");

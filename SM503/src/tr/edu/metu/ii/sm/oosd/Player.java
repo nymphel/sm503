@@ -17,6 +17,50 @@ public class Player {
 		//TODO: players can take turn by entering commands
 	}
 	
+	public boolean buySection(String coordinate) {
+		Section selectedSection = FarmGame.getInstance().getFarmArea().selectSection(coordinate);
+		return selectedSection.buySection(this);
+	}
+	
+	public boolean sellSection(String coordinate) {
+		Section selectedSection = FarmGame.getInstance().getFarmArea().selectSection(coordinate);
+		return selectedSection.sellSection(this);
+	}
+	
+	public boolean recruitEmployee(Employee employee) {
+		return employee.recruit(this);
+	}
+	
+	public boolean fireEmployee(Employee employee) {
+		return employee.fire(this);
+	}
+	
+	public boolean plowSection(String coordinate, Employee employee) {
+		Section selectedSection = FarmGame.getInstance().getFarmArea().selectSection(coordinate);
+		return selectedSection.plow(this, employee);
+	}
+	
+	public boolean plantSeed(String coordinate, String seed, Employee employee) {
+		Section selectedSection = FarmGame.getInstance().getFarmArea().selectSection(coordinate);
+		return selectedSection.plant(this, seed, employee);
+	}
+	
+	public boolean harvestSection(String coordinate, Employee employee) {
+		Section selectedSection = FarmGame.getInstance().getFarmArea().selectSection(coordinate);
+		return selectedSection.harvest(this, employee);
+	}
+	
+	public boolean constructBuilding(String coordinate, Employee employee) {
+		Section selectedSection = FarmGame.getInstance().getFarmArea().selectSection(coordinate);
+		return selectedSection.constructBuilding(this, employee);
+	}
+	
+	public boolean teardownBuilding(String coordinate, Employee employee) {
+		Section selectedSection = FarmGame.getInstance().getFarmArea().selectSection(coordinate);
+		return selectedSection.teardownBuilding(this, employee);
+	}
+
+	
 	public String getName() {
 		return name;
 	}

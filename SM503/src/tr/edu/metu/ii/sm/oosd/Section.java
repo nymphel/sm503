@@ -100,8 +100,8 @@ public class Section {
 		}
 		
 		//create a crop according to seed type
-		boolean plaughtSuccessful = plantSeed(player, seed);
-		if(!plaughtSuccessful) {
+		boolean plantSuccessful = plantSeed(player, seed);
+		if(!plantSuccessful) {
 			return false;
 		}
 		
@@ -122,6 +122,10 @@ public class Section {
 	private boolean plantSeed(Player player, String seed) {
 		HashMap<String, SeedData> seedData = DataStore.getInstance().getSeedData();
 		SeedData sData = seedData.get(seed);
+		
+		if(sData == null) {
+			//TODO
+		}
 		
 		int costToPlant = sData.getCostToPlant();
 		if (this.owner.getCoin() < costToPlant) {
@@ -204,7 +208,10 @@ public class Section {
 		if(this.owner != player) {
 			System.out.println("you cannot teardown a building on this section that you don't own.");
 			return false;
-		} else if(this.activeBuilding == null) {
+		} else if(this.activeCrop != null) {
+			System.out.println("you cannot harvest this section that it not empty.");
+			return false;
+		}else if(this.activeBuilding == null) {
 			System.out.println("there is no building to tear down");
 			return false;
 		}

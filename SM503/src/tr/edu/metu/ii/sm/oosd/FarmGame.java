@@ -48,53 +48,7 @@ public class FarmGame {
 		this.activePlayer = player1;
 
 	}
-
-	//Controller actions 
 	
-	public boolean buySection(Player player, String coordinate) {
-		Section selectedSection = this.farmArea.selectSection(coordinate);
-		return selectedSection.buySection(player);
-	}
-	
-	public boolean sellSection(Player player, String coordinate) {
-		Section selectedSection = this.farmArea.selectSection(coordinate);
-		return selectedSection.sellSection(player);
-	}
-	
-	public boolean recruitEmployee(Player player, Employee employee) {
-		return employee.recruit(player);
-	}
-	
-	public boolean fireEmployee(Player player, Employee employee) {
-		return employee.fire(player);
-	}
-	
-	public boolean plowSection(Player player, String coordinate, Employee employee) {
-		Section selectedSection = this.farmArea.selectSection(coordinate);
-		return selectedSection.plow(player, employee);
-	}
-	
-	public boolean plantSeed(Player player, String coordinate, String seed, Employee employee) {
-		Section selectedSection = this.farmArea.selectSection(coordinate);
-		return selectedSection.plant(player, seed, employee);
-	}
-	
-	public boolean harvestSection(Player player, String coordinate, Employee employee) {
-		Section selectedSection = this.farmArea.selectSection(coordinate);
-		return selectedSection.harvest(player, employee);
-	}
-	
-	
-	public boolean constructBuilding(Player player, String coordinate, Employee employee) {
-		Section selectedSection = this.farmArea.selectSection(coordinate);
-		return selectedSection.constructBuilding(player, employee);
-	}
-	
-	public boolean teardownBuilding(Player player, String coordinate, Employee employee) {
-		Section selectedSection = this.farmArea.selectSection(coordinate);
-		return selectedSection.teardownBuilding(player, employee);
-	}
-
 	public boolean isGameFinished() {
 		return this.farmArea.allSectionsOccupied();
 	}
@@ -109,6 +63,10 @@ public class FarmGame {
 
 	public void setActivePlayer(Player activePlayer) {
 		this.activePlayer = activePlayer;
+	}
+
+	public FarmArea getFarmArea() {
+		return farmArea;
 	}
 
 	public void computeRound() {
