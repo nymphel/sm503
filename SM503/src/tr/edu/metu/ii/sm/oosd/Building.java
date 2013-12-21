@@ -15,13 +15,16 @@ public class Building {
 			this.completed = true;
 			int xpWhenCompleted = buildingData.getXpWhenCompleted();
 			this.owner.addXp(xpWhenCompleted);
+			System.out.println("::::: building rent income is gained for player "+owner.getName());
 		}
 		
 		if(completed) {
 			int coinIncome =buildingData.getCoinIncome();
 			this.owner.addCoin(coinIncome);
+			System.out.println("::::: building is completed for player "+owner.getName());
 		}
 		
+		System.out.println("::::: building took round for player "+owner.getName());
 	}
 
 	protected int getRoundsBuilt() {

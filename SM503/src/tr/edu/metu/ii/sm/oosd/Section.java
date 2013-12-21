@@ -278,4 +278,13 @@ public class Section {
 		this.plaught = plaught;
 	}
 
+	public Crop getActiveCrop() {
+		return activeCrop;
+	}
+
+	public Building getActiveBuilding() {
+		return activeBuilding;
+	}
+	
+
 }

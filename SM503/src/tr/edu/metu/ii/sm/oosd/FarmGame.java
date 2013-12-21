@@ -75,7 +75,6 @@ public class FarmGame {
 	}
 
 	public void computeRound() {
-		// TODO Auto-generated method stub
 		
 		if(activePlayer.equals(player1)) {
 			this.activePlayer = player2;
@@ -83,6 +82,19 @@ public class FarmGame {
 			this.activePlayer = player1;
 		}
 		
+		//manage crops & buildings
+		HashMap<String, Section> sections = this.farmArea.getSections();
+		for (Section section : sections.values()) {
+			Crop activeCrop = section.getActiveCrop();
+			if(activeCrop != null) {
+				activeCrop.takeRound();
+			}
+			
+			Building activeBuilding = section.getActiveBuilding();
+			if(activeBuilding != null) {
+				activeBuilding.takeRound();
+			}
+		}
 	}
 
 	public void showResults() {

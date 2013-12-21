@@ -117,4 +117,10 @@ public class FarmArea {
 		return true;
 	}
 
+	public HashMap<String, Section> getSections() {
+		return sections;
+	}
+	
+	
+
 }

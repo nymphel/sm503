@@ -14,7 +14,9 @@ public class Crop {
 		roundsPlanted ++;
 		if(seedData.getTimeToHarvest() == roundsPlanted) {
 			this.readyToHarvest = true;
+			System.out.println("::::: crop "+name+" is ready to for player "+owner.getName());
 		}
+		System.out.println("::::: crop "+name+" took round for player "+owner.getName());
 		
 	}
 	
