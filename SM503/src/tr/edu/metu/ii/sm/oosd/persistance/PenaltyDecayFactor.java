@@ -2,6 +2,8 @@ package tr.edu.metu.ii.sm.oosd.persistance;
 
 public class PenaltyDecayFactor extends DecayFactor {
 
+	private static final long serialVersionUID = -4121383223182345016L;
+
 	@Override
 	public float getDecayFactor() {
 		int step1 = 0;
