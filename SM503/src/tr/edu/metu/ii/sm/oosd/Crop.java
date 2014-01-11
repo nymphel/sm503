@@ -18,13 +18,14 @@ public class Crop {
 		int timeToHarvest = seedData.getTimeToHarvest();
 		if(timeToHarvest == roundsPlanted) {
 			this.readyToHarvest = true;
-			System.out.println("::::: crop "+name+" is ready to for "+owner.getName());
+			System.out.println("::::: crop "+name+" is READY to for "+owner.getName());
 		}
 		System.out.println("::::: crop "+name+" took round for "+owner.getName());
 		
 		// calculate decay rounds passed if ready to harvest
 		if(readyToHarvest) {
 			decayRound = roundsPlanted - timeToHarvest;
+			System.out.println("decay round is :"+decayRound);
 		}
 		
 	}
@@ -39,8 +40,10 @@ public class Crop {
 		DecayFactor decayFactor = seedData.getDecayFactor();
 		decayFactor.setRound(decayRound);
 		float factor = decayFactor.getDecayFactor();
+		System.out.println("decay factor is "+factor);
 		
-		//TODO: effect factor
+		float calculatedSalePrice = (float) salePrice * factor;
+		salePrice = Math.round(calculatedSalePrice);
 		
 		this.owner.addCoin(salePrice);
 	}
