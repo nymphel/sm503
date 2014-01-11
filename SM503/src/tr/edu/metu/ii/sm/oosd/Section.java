@@ -75,8 +75,6 @@ public class Section {
 			return false;
 		}
 		
-		//TODO: what to do with farmer
-		
 		ActionData action = actionData.get(Type.PLOW);
 		changePlayerCurrency(player, action);
 		
