@@ -11,6 +11,7 @@ public class SeedData implements Serializable {
 	private int salePrice;
 	private int xpGainedWhenHarvested;
 	private int timeToHarvest;
+	private DecayFactor decayFactor;
 
 	public String getName() {
 		return name;
@@ -50,6 +51,14 @@ public class SeedData implements Serializable {
 
 	protected void setTimeToHarvest(int timeToHarvest) {
 		this.timeToHarvest = timeToHarvest;
+	}
+
+	public DecayFactor getDecayFactor() {
+		return decayFactor;
+	}
+
+	public void setDecayFactor(DecayFactor decayFactor) {
+		this.decayFactor = decayFactor;
 	}
 
 }

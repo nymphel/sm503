@@ -15,6 +15,7 @@ public static void setupSampleDataStore() throws Exception {
 		seed.setSalePrice(40);
 		seed.setXpGainedWhenHarvested(11);
 		seed.setTimeToHarvest(10);
+		seed.setDecayFactor(new LongDecayFactor());
 		seeds.put(seed.getName(), seed);
 		
 		seed = new SeedData();
@@ -23,6 +24,7 @@ public static void setupSampleDataStore() throws Exception {
 		seed.setSalePrice(45);
 		seed.setXpGainedWhenHarvested(14);
 		seed.setTimeToHarvest(11);
+		seed.setDecayFactor(new LongDecayFactor());
 		seeds.put(seed.getName(), seed);
 		
 		seed = new SeedData();
@@ -31,6 +33,7 @@ public static void setupSampleDataStore() throws Exception {
 		seed.setSalePrice(52);
 		seed.setXpGainedWhenHarvested(4);
 		seed.setTimeToHarvest(5);
+		seed.setDecayFactor(new PenaltyDecayFactor());
 		seeds.put(seed.getName(), seed);
 		
 		seed = new SeedData();
@@ -39,6 +42,7 @@ public static void setupSampleDataStore() throws Exception {
 		seed.setSalePrice(35);
 		seed.setXpGainedWhenHarvested(5);
 		seed.setTimeToHarvest(4);
+		seed.setDecayFactor(new StepDecayFactor());
 		seeds.put(seed.getName(), seed);
 		
 		seed = new SeedData();
@@ -47,6 +51,7 @@ public static void setupSampleDataStore() throws Exception {
 		seed.setSalePrice(48);
 		seed.setXpGainedWhenHarvested(16);
 		seed.setTimeToHarvest(14);
+		seed.setDecayFactor(new LongDecayFactor());
 		seeds.put(seed.getName(), seed);
 		
 		seed = new SeedData();
@@ -55,6 +60,7 @@ public static void setupSampleDataStore() throws Exception {
 		seed.setSalePrice(36);
 		seed.setXpGainedWhenHarvested(6);
 		seed.setTimeToHarvest(4);
+		seed.setDecayFactor(new StepDecayFactor());
 		seeds.put(seed.getName(), seed);
 		
 		seed = new SeedData();
@@ -63,6 +69,7 @@ public static void setupSampleDataStore() throws Exception {
 		seed.setSalePrice(30);
 		seed.setXpGainedWhenHarvested(4);
 		seed.setTimeToHarvest(3);
+		seed.setDecayFactor(new PenaltyDecayFactor());
 		seeds.put(seed.getName(), seed);
 		
 		dataStore.setSeedData(seeds);
