@@ -10,10 +10,10 @@ public class PenaltyDecayFactor extends DecayFactor {
 		int step2 = 3;
 		int step3 = 7;
 
-		if (step1 <= round && round < step2) {
+		if (step1 <= round && round <= step2) {
 			return (float) 1;
-		} else if (round >= step2 && round < step3) {
-			return (float) 0.7; //TODO
+		} else if (round > step2 && round < step3) {
+			return (float) 0.25 * (float)(step3-step2);
 		} else if (round >= step3) {
 			return (float) 0;
 		}
