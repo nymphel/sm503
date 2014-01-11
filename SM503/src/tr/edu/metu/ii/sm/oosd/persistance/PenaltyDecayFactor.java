@@ -3,7 +3,7 @@ package tr.edu.metu.ii.sm.oosd.persistance;
 public class PenaltyDecayFactor extends DecayFactor {
 
 	@Override
-	protected float getDecayFactor() {
+	public float getDecayFactor() {
 		int step1 = 0;
 		int step2 = 3;
 		int step3 = 7;

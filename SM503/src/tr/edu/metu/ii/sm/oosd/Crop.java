@@ -1,5 +1,6 @@
 package tr.edu.metu.ii.sm.oosd;
 
+import tr.edu.metu.ii.sm.oosd.persistance.DecayFactor;
 import tr.edu.metu.ii.sm.oosd.persistance.SeedData;
 
 public class Crop {
@@ -10,13 +11,21 @@ public class Crop {
 	private SeedData seedData;
 	private Player owner;
 	
+	private int decayRound = 0;
+	
 	public void takeRound() {
 		roundsPlanted ++;
-		if(seedData.getTimeToHarvest() == roundsPlanted) {
+		int timeToHarvest = seedData.getTimeToHarvest();
+		if(timeToHarvest == roundsPlanted) {
 			this.readyToHarvest = true;
 			System.out.println("::::: crop "+name+" is ready to for "+owner.getName());
 		}
 		System.out.println("::::: crop "+name+" took round for "+owner.getName());
+		
+		// calculate decay rounds passed if ready to harvest
+		if(readyToHarvest) {
+			decayRound = roundsPlanted - timeToHarvest;
+		}
 		
 	}
 	
@@ -25,6 +34,14 @@ public class Crop {
 		this.owner.addXp(xpGainedWhenHarvested);
 		
 		int salePrice = seedData.getSalePrice();
+		
+		//according to decayRounds, calculate sale price with seed data decay strategy
+		DecayFactor decayFactor = seedData.getDecayFactor();
+		decayFactor.setRound(decayRound);
+		float factor = decayFactor.getDecayFactor();
+		
+		//TODO: effect factor
+		
 		this.owner.addCoin(salePrice);
 	}
 	
