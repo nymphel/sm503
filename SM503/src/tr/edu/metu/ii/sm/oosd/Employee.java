@@ -67,5 +67,14 @@ public abstract class Employee {
 	public void setOwner(Player owner) {
 		this.owner = owner;
 	}
+	public void takeRound() {
+		// this will return of class, Farmer/Constructor
+		String type = this.getClass().getSimpleName();
+		EmployeeData empData = employeeData.get(type);
+		int salary = empData.getSalary();
+		
+		System.out.println("Salary of "+type+" is charged from player.");
+		owner.charge(salary);
+	}
 
 }

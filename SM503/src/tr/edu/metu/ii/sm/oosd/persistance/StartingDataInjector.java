@@ -129,11 +129,13 @@ public static void setupSampleDataStore() throws Exception {
 		EmployeeData farmer = new EmployeeData();
 		farmer.setType("Farmer");
 		farmer.setCost(10);
+		farmer.setSalary(1);
 		employees.put(farmer.getType(), farmer);
 		
 		EmployeeData constructor = new EmployeeData();
 		constructor.setType("Constructor");
 		constructor.setCost(12);
+		constructor.setSalary(2);
 		employees.put(constructor.getType(), constructor);
 		dataStore.setEmployeeData(employees);
 		

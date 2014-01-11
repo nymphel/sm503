@@ -285,6 +285,11 @@ public class Section {
 	public Building getActiveBuilding() {
 		return activeBuilding;
 	}
+
+	public Employee getAssignedEmployee() {
+		return assignedEmployee;
+	}
+	
 	
 
 }

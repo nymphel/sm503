@@ -94,6 +94,12 @@ public class FarmGame {
 			if(activeBuilding != null) {
 				activeBuilding.takeRound();
 			}
+			
+			Employee assignedEmployee = section.getAssignedEmployee();
+			if(assignedEmployee != null) {
+				assignedEmployee.takeRound();
+				//TODO: inform UI
+			}
 		}
 	}
 

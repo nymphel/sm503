@@ -8,6 +8,7 @@ public class EmployeeData implements  Serializable {
 	
 	private int cost;
 	private String type;
+	private int salary;
 
 	public int getCost() {
 		return cost;
@@ -23,6 +24,14 @@ public class EmployeeData implements  Serializable {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public int getSalary() {
+		return salary;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
 	}
 
 }
