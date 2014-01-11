@@ -9,7 +9,7 @@ import tr.edu.metu.ii.sm.oosd.persistance.SeedData;
 public class FarmGame {
 
 	private static final int STARTING_XP = 0;
-	private static final int STARTING_COIN = 140;
+	private static final int STARTING_COIN = 1500;
 
 	private static FarmGame instance;
 
