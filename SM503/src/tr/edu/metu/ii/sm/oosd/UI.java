@@ -43,7 +43,10 @@ public class UI {
 
 			interpret(activePlayer);
 
-			farmGame.computeRound();
+			boolean gameOverDueToCoin = farmGame.computeRound();
+			if(gameOverDueToCoin) {
+				break;
+			}
 
 			round++;
 		}

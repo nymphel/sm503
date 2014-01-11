@@ -9,7 +9,7 @@ import tr.edu.metu.ii.sm.oosd.persistance.SeedData;
 public class FarmGame {
 
 	private static final int STARTING_XP = 0;
-	private static final int STARTING_COIN = 1500;
+	private static final int STARTING_COIN = 140;
 
 	private static FarmGame instance;
 
@@ -74,7 +74,7 @@ public class FarmGame {
 		return farmArea;
 	}
 
-	public void computeRound() {
+	public boolean computeRound() {
 		
 		if(activePlayer.equals(player1)) {
 			this.activePlayer = player2;
@@ -98,9 +98,16 @@ public class FarmGame {
 			Employee assignedEmployee = section.getAssignedEmployee();
 			if(assignedEmployee != null) {
 				assignedEmployee.takeRound();
-				//TODO: inform UI
+
+				int activePlayerCoin = this.activePlayer.getCoin();
+				if(activePlayerCoin < 0) {
+					System.out.println(this.activePlayer.getName() +" has no f-coins to pay salary for her/his employees!!!");
+					return true;
+				}
 			}
 		}
+		
+		return false;
 	}
 
 	public void showResults() {
@@ -108,11 +115,22 @@ public class FarmGame {
 		System.out.println(player2.getName() +" has "+player2.getXp()+" XP");
 		
 		String winner = "We have no winner, xp rates are equal.";
-		if(player1.getXp() > player2.getXp()) {
-			winner = "The winner is: " + player1.getName();
+		
+		Player winnerPlayer = null;
+		
+		if(player1.getCoin() < 0) {
+			winnerPlayer = player2;
+		} else if(player2.getCoin() < 0) {
+			winnerPlayer = player1;
+		} else if(player1.getXp() > player2.getXp()) {
+			winnerPlayer = player1;
 		} else if(player1.getXp() < player2.getXp()) {
-			winner = "The winner is: " + player2.getName();
+			winnerPlayer = player2;
 		} 
+		
+		if(winnerPlayer != null) {
+			winner = "The winner is: " + winnerPlayer.getName();
+		}
 		
 		System.out.println(winner);
 		
