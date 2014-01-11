@@ -1,6 +1,6 @@
 package tr.edu.metu.ii.sm.oosd;
 
-import tr.edu.metu.ii.sm.oosd.persistance.DecayFactor;
+import tr.edu.metu.ii.sm.oosd.persistance.DecayStrategy;
 import tr.edu.metu.ii.sm.oosd.persistance.SeedData;
 
 public class Crop {
@@ -37,12 +37,12 @@ public class Crop {
 		int salePrice = seedData.getSalePrice();
 		
 		//according to decayRounds, calculate sale price with seed data decay strategy
-		DecayFactor decayFactor = seedData.getDecayFactor();
-		decayFactor.setRound(decayRound);
-		float factor = decayFactor.getDecayFactor();
-		System.out.println("decay factor is "+factor);
+		DecayStrategy decayStrategy = seedData.getDecayFactor();
+		decayStrategy.setRound(decayRound);
+		float decayFactor = decayStrategy.getDecayFactor();
+		System.out.println("decay factor is "+decayFactor);
 		
-		float calculatedSalePrice = (float) salePrice * factor;
+		float calculatedSalePrice = (float) salePrice * decayFactor;
 		salePrice = Math.round(calculatedSalePrice);
 		
 		this.owner.addCoin(salePrice);

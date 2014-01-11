@@ -2,7 +2,7 @@ package tr.edu.metu.ii.sm.oosd.persistance;
 
 import java.io.Serializable;
 
-public abstract class DecayFactor implements Serializable {
+public abstract class DecayStrategy implements Serializable {
 
 	private static final long serialVersionUID = 456582989462055741L;
 	
